@@ -1,79 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hannan & Afra Nikah</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Afra & Hannan Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  overflow:hidden;
+  background:radial-gradient(circle at top,#28385c,#090b16 70%);
+  color:#f8ecd2;
+  font-family:'Cormorant Garamond',serif;
+}
+
+.stars{
+  position:fixed;
+  inset:0;
+  background-image:
+  radial-gradient(#fff 1px,transparent 1px),
+  radial-gradient(#d8b76a 1px,transparent 1px);
+  background-size:70px 70px,130px 130px;
+  animation:twinkle 6s infinite alternate;
+  opacity:.35;
+}
+
+@keyframes twinkle{
+  from{opacity:.2}
+  to{opacity:.55}
+}
+
+.moon{
+  position:fixed;
+  top:45px;
+  right:45px;
+  width:95px;
+  height:95px;
+  border-radius:50%;
+  background:#f7e6aa;
+  box-shadow:0 0 45px #f6d77b;
+}
+
+.moon:after{
+  content:"";
+  position:absolute;
+  left:25px;
+  top:0;
+  width:95px;
+  height:95px;
+  border-radius:50%;
+  background:#151b31;
+}
+
+.petals span{
+  position:fixed;
+  top:-10%;
+  color:#b66b6b;
+  font-size:24px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(115vh) rotate(360deg)}
+}
+
+.screen{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.screen.active{display:flex}
+
+.card{
+  width:min(92%,780px);
+  min-height:70vh;
+  padding:38px 25px;
+  border:1px solid rgba(218,178,93,.55);
+  border-radius:24px;
+  background:
+  linear-gradient(rgba(30,21,35,.72),rgba(20,15,28,.82)),
+  url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  box-shadow:0 0 35px rgba(218,178,93,.28);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:4rem;
+  color:#e3bd70;
+  margin-bottom:20px;
+}
+
+h2{
+  font-size:2.5rem;
+  letter-spacing:5px;
+  color:#e8c77d;
+  margin-bottom:25px;
+}
+
+.arabic{
+  font-family:'Amiri',serif;
+  font-size:2.2rem;
+  color:#f4dda3;
+  margin-bottom:18px;
+}
+
+.line{
+  opacity:0;
+  transform:translateY(15px);
+  animation:show 1.5s forwards;
+  font-size:1.25rem;
+  margin:7px 0;
+}
+
+.big{
+  font-size:2.4rem;
+  color:#fff0c2;
+  font-weight:700;
+}
+
+.small{
+  font-size:1.05rem;
+  color:#ddcfae;
+}
+
+@keyframes show{
+  to{opacity:1;transform:translateY(0)}
+}
+
+button,.btn{
+  margin:10px;
+  padding:13px 24px;
+  border-radius:40px;
+  border:1px solid #d9b15f;
+  background:rgba(87,28,38,.8);
+  color:#fff4d7;
+  font-size:1.1rem;
+  font-family:'Cormorant Garamond',serif;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 0 15px rgba(218,178,93,.25);
+}
+
+.opening{
+  cursor:pointer;
+}
+
+.seal{
+  margin:auto;
+  width:145px;
+  height:145px;
+  border-radius:50%;
+  background:radial-gradient(circle,#8b2636,#4a0d18);
+  border:5px solid #b88a48;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:3.5rem;
+  box-shadow:0 0 30px rgba(218,178,93,.5);
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.05)}
+}
+
+.countdown{
+  font-size:2rem;
+  color:#fff2c9;
+  margin-top:20px;
+  line-height:1.7;
+}
+
+.footer{
+  margin-top:20px;
+  font-size:1rem;
+  color:#d8c69e;
+}
+
+@media(max-width:600px){
+  h1{font-size:3rem}
+  h2{font-size:2rem}
+  .arabic{font-size:1.8rem}
+  .big{font-size:2rem}
+  .line{font-size:1.1rem}
+  .card{min-height:76vh}
+}
+</style>
 </head>
+
 <body>
 
-  <section class="hero" id="hero">
-    <div class="moon"></div>
-    <div class="stars"></div>
+<div class="stars"></div>
+<div class="moon"></div>
 
-    <div class="envelope" onclick="openInvite()">
-      <div class="flap"></div>
-      <div class="seal">☾</div>
-      <p>Tap to Open</p>
+<div class="petals">
+  <span style="left:10%;animation-duration:9s">🌹</span>
+  <span style="left:25%;animation-duration:12s">❋</span>
+  <span style="left:45%;animation-duration:10s">🌹</span>
+  <span style="left:70%;animation-duration:14s">❋</span>
+  <span style="left:85%;animation-duration:11s">🌹</span>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Opening -->
+<section class="screen active opening" id="openScreen">
+  <div class="card">
+    <div class="seal">☾</div>
+    <h1 style="margin-top:30px">Tap to Open</h1>
+    <p class="small">A moonlit invitation awaits</p>
+  </div>
+</section>
+
+<!-- Nikkah Intro -->
+<section class="screen">
+  <div class="card">
+    <h2>NIKKAH</h2>
+    <p class="arabic line" style="animation-delay:.5s">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <p class="line" style="animation-delay:2s">With immense joy and the blessings of Allah,</p>
+    <p class="line" style="animation-delay:4s">Syed Hafeez Ur Rahman & Amina Samrin</p>
+    <p class="line" style="animation-delay:6s">joyfully invite you and your family</p>
+    <p class="line" style="animation-delay:8s">to grace the sacred Nikkah of their daughter</p>
+  </div>
+</section>
+
+<!-- Couple -->
+<section class="screen">
+  <div class="card">
+    <p class="big line" style="animation-delay:.5s">Afra Zoya</p>
+    <p class="line small" style="animation-delay:2s">Grand D/o Late Mir Ismail & Rahmatunisa</p>
+    <p class="line small" style="animation-delay:4s">Grand D/o Late Syed Rahmatullah & Sayeeda Begum</p>
+
+    <p class="line" style="animation-delay:6s;font-size:2rem;color:#e0b765">with</p>
+
+    <p class="big line" style="animation-delay:8s">Hannan Shariff</p>
+    <p class="line small" style="animation-delay:10s">S/o gdnd</p>
+    <p class="line small" style="animation-delay:12s">Grand S/o ABC</p>
+    <p class="line small" style="animation-delay:14s">Grand S/o DE</p>
+  </div>
+</section>
+
+<!-- Nikkah Details -->
+<section class="screen">
+  <div class="card">
+    <h2>NIKKAH DETAILS</h2>
+    <p class="line" style="animation-delay:.5s">📅 11 November 2026</p>
+    <p class="line" style="animation-delay:2s">🕢 7:30 PM</p>
+    <p class="line" style="animation-delay:3.5s">📍 Bangalore</p>
+    <p class="footer line" style="animation-delay:5s">☾ A blessed beginning under Allah’s mercy ☾</p>
+  </div>
+</section>
+
+<!-- Countdown -->
+<section class="screen">
+  <div class="card">
+    <h2>COUNTDOWN</h2>
+    <p class="line" style="animation-delay:.5s">Every passing moment brings us closer to a blessed day.</p>
+    <div class="countdown" id="countdownNikkah"></div>
+  </div>
+</section>
+
+<!-- Nikkah Links -->
+<section class="screen">
+  <div class="card">
+    <h2>NIKKAH VENUE</h2>
+    <p class="line" style="animation-delay:.5s">We await your gracious presence.</p>
+
+    <div class="line" style="animation-delay:2s">
+      <a class="btn" href="https://maps.app.goo.gl/3gKeHGfApc4LnLzW6" target="_blank">📍 View Location</a>
     </div>
-  </section>
 
-  <main id="invite" class="hidden">
+    <div class="line" style="animation-delay:3.5s">
+      <a class="btn" href="#" onclick="addCalendar('Nikkah Ceremony of Afra Zoya & Hannan Shariff')">📅 Add to Calendar</a>
+    </div>
 
-    <section class="cover">
-      <p class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-      <h3>You are cordially invited to the</h3>
-      <h1>Nikah Ceremony</h1>
-      <h2>Hannan Shariff</h2>
-      <span>&</span>
-      <h2>Afra Zoya</h2>
-      <p class="dua">May Allah bless this union with love, barakah and happiness.</p>
-    </section>
+    <div class="line" style="animation-delay:5s">
+      <a class="btn" href="https://wa.me/918660235714?text=Assalamu%20Alaikum%2C%20In%20Sha%20Allah%20I%20will%20attend%20the%20Nikkah%20ceremony." target="_blank">💚 WhatsApp RSVP</a>
+    </div>
+  </div>
+</section>
 
-    <section class="card">
-      <h1>Nikah</h1>
-      <p class="date">11 November 2026</p>
-      <p>7:30 PM onwards</p>
-      <p>Venue: Bangalore</p>
+<!-- Valima Intro -->
+<section class="screen">
+  <div class="card">
+    <h2>VALIMA</h2>
+    <p class="arabic line" style="animation-delay:.5s">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <p class="line" style="animation-delay:2s">With immense joy and the blessings of Allah,</p>
+    <p class="line" style="animation-delay:4s">the family joyfully invites you</p>
+    <p class="line" style="animation-delay:6s">to celebrate the blessed Valima reception of</p>
+  </div>
+</section>
 
-      <div class="buttons">
-        <a href="https://maps.app.goo.gl/3gKeHGfApc4LnLzW6" target="_blank">📍 Location</a>
-        <a href="#" onclick="addCalendar('Nikah Ceremony')">📅 Add to Calendar</a>
-      </div>
-    </section>
+<!-- Valima Couple -->
+<section class="screen">
+  <div class="card">
+    <p class="big line" style="animation-delay:.5s">Afra Zoya</p>
+    <p class="line" style="animation-delay:2s;font-size:2rem;color:#e0b765">with</p>
+    <p class="big line" style="animation-delay:4s">Hannan Shariff</p>
 
-    <section class="card valima">
-      <h1>Valima</h1>
-      <p class="date">12 November 2026</p>
-      <p>7:30 PM onwards</p>
-      <p>Venue: Bangalore</p>
+    <p class="line small" style="animation-delay:6s">May Allah bless this union with love, mercy and barakah.</p>
+  </div>
+</section>
 
-      <div class="buttons">
-        <a href="https://maps.app.goo.gl/3gKeHGfApc4LnLzW6" target="_blank">📍 Location</a>
-        <a href="#" onclick="addCalendar('Valima Ceremony')">📅 Add to Calendar</a>
-      </div>
-    </section>
+<!-- Valima Details -->
+<section class="screen">
+  <div class="card">
+    <h2>VALIMA DETAILS</h2>
+    <p class="line" style="animation-delay:.5s">📅 11 November 2026</p>
+    <p class="line" style="animation-delay:2s">🕢 Reception Time</p>
+    <p class="line" style="animation-delay:3.5s">📍 Bangalore</p>
+  </div>
+</section>
 
-    <section class="countdown">
-      <h1>Countdown to Nikah</h1>
-      <div id="timer"></div>
-    </section>
+<!-- Valima Links -->
+<section class="screen">
+  <div class="card">
+    <h2>VALIMA VENUE</h2>
 
-    <section class="rsvp">
-      <h1>Kindly Seal Your Presence</h1>
-      <a class="whatsapp" target="_blank"
-      href="https://wa.me/918660235714?text=Assalamu%20Alaikum!%20In%20Sha%20Allah,%20I%20will%20join%20the%20Nikah%20celebration%20of%20Hannan%20Shariff%20and%20Afra%20Zoya.">
-      ✨ In Sha Allah, I’ll Be There ✨
-      </a>
-    </section>
+    <div class="line" style="animation-delay:.5s">
+      <a class="btn" href="https://maps.app.goo.gl/3gKeHGfApc4LnLzW6" target="_blank">📍 View Location</a>
+    </div>
 
-  </main>
+    <div class="line" style="animation-delay:2s">
+      <a class="btn" href="#" onclick="addCalendar('Valima Reception of Afra Zoya & Hannan Shariff')">📅 Add to Calendar</a>
+    </div>
 
-  <audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+    <div class="line" style="animation-delay:3.5s">
+      <a class="btn" href="https://wa.me/918660235714?text=Assalamu%20Alaikum%2C%20In%20Sha%20Allah%20I%20will%20attend%20the%20Valima." target="_blank">💚 WhatsApp RSVP</a>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- Final -->
+<section class="screen">
+  <div class="card">
+    <p class="arabic line" style="animation-delay:.5s">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+    <p class="line" style="animation-delay:2s">“And He placed between you affection and mercy.”</p>
+    <p class="line small" style="animation-delay:4s">Surah Ar-Rum 30:21</p>
+    <h1 class="line" style="animation-delay:6s">Awaiting Your Presence</h1>
+  </div>
+</section>
+
+<script>
+const screens = document.querySelectorAll(".screen");
+const openScreen = document.getElementById("openScreen");
+const music = document.getElementById("music");
+
+let current = 0;
+
+openScreen.addEventListener("click", () => {
+  music.play().catch(()=>{});
+  nextSlide();
+  setInterval(nextSlide, 12000);
+});
+
+function nextSlide(){
+  screens[current].classList.remove("active");
+  current++;
+  if(current >= screens.length) current = screens.length - 1;
+  screens[current].classList.add("active");
+}
+
+function countdown(id, date){
+  const box = document.getElementById(id);
+
+  function update(){
+    const target = new Date(date).getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    if(diff <= 0){
+      box.innerHTML = "The blessed day has arrived 🤍";
+      return;
+    }
+
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff/(1000*60*60))%24);
+    const m = Math.floor((diff/(1000*60))%60);
+    const s = Math.floor((diff/1000)%60);
+
+    box.innerHTML = `${d} Days<br>${h} Hours<br>${m} Minutes<br>${s} Seconds`;
+  }
+
+  update();
+  setInterval(update,1000);
+}
+
+countdown("countdownNikkah","November 11, 2026 19:30:00");
+
+function addCalendar(title){
+  const start = "20261111T193000";
+  const end = "20261111T223000";
+  const details = "Wedding invitation of Afra Zoya and Hannan Shariff";
+  const location = "Bangalore";
+
+  const url =
+  `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${start}/${end}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+
+  window.open(url,"_blank");
+}
+</script>
+
 </body>
 </html>
