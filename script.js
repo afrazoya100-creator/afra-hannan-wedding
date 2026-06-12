@@ -40,3 +40,20 @@ setInterval(() => {
 function addCalendar(eventName) {
   alert("Calendar option can be added after final date, time and venue are fixed 🤍");
 }
+let autoPlay;
+
+openScreen.addEventListener("click", () => {
+  music.play().catch(()=>{});
+  nextSlide();
+  autoPlay = setInterval(nextSlide, 12000);
+});
+
+function showDetails(){
+  clearInterval(autoPlay);
+  screens[current].classList.remove("active");
+
+  const details = document.getElementById("mainDetails");
+  current = Array.from(screens).indexOf(details);
+
+  details.classList.add("active");
+}
