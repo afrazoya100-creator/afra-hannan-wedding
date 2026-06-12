@@ -1,243 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Afra & Hannan Nikkah Invitation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afra & Hannan Nikkah</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
+html{scroll-behavior:smooth}
 body{
-  height:100vh;
-  overflow:hidden;
   font-family:'Cormorant Garamond',serif;
-  background:linear-gradient(135deg,#2b0f16,#6b1f2b,#f8eadb);
-  color:#fff9f2;
+  background:#17080d;
+  color:#fff8ec;
+  overflow-x:hidden;
 }
+body.open{overflow-y:auto}
+
+.audio{position:fixed;right:18px;bottom:18px;z-index:999}
+.audio button{
+  width:54px;height:54px;border-radius:50%;border:none;
+  background:#d4af37;color:#3b160f;font-size:22px;
+  box-shadow:0 0 25px #d4af37;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at top,#7b2434,#2b0f16 55%,#120509);
+  position:relative;overflow:hidden;text-align:center;padding:25px;
+}
+
+.moon{
+  position:absolute;top:45px;right:35px;
+  width:80px;height:80px;border-radius:50%;
+  background:#f8e7a0;
+  box-shadow:0 0 45px #f8e7a0;
+}
+.moon:after{
+  content:"";position:absolute;left:18px;top:-3px;
+  width:80px;height:80px;border-radius:50%;background:#2b0f16;
+}
+
+.lantern{
+  position:absolute;top:115px;left:28px;font-size:50px;
+  animation:swing 3s infinite ease-in-out;
+}
+@keyframes swing{50%{transform:rotate(8deg)}}
+
+.envelope{
+  width:290px;height:190px;background:#fff0d5;
+  border-radius:18px;position:relative;
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+  transition:1.2s;
+}
+.envelope:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(145deg,transparent 50%,#e7c78f 50%);
+  border-radius:18px;
+}
+.seal{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:92px;height:92px;border-radius:50%;
+  background:radial-gradient(circle,#bd2037,#6b0f1c);
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;z-index:2;
+  box-shadow:0 0 35px #d4af37;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.08)}}
+
+.open .hero{display:none}
 
 section{
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:25px;
-  opacity:0;
-  transform:scale(1.08);
-  transition:1.6s ease;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:35px 20px;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at top,#6b1f2b,#2b0f16 60%,#100408);
 }
 
-section.active{
-  opacity:1;
-  transform:scale(1);
-  z-index:3;
+section:nth-child(even){
+  background:
+    radial-gradient(circle at bottom,#7a2a38,#2b0f16 60%,#100408);
 }
 
 .card{
-  width:100%;
-  max-width:430px;
-  padding:35px 25px;
-  border-radius:30px;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(14px);
-  border:1.5px solid rgba(212,175,55,0.8);
-  box-shadow:0 0 40px rgba(212,175,55,0.35);
-  animation:glow 3s infinite alternate;
+  width:100%;max-width:440px;
+  padding:34px 24px;border-radius:32px;
+  background:rgba(255,255,255,.13);
+  backdrop-filter:blur(16px);
+  border:1.5px solid rgba(212,175,55,.8);
+  box-shadow:0 0 45px rgba(212,175,55,.28);
+  animation:zoom 1.4s ease both;
 }
+@keyframes zoom{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 
-@keyframes glow{
-  from{box-shadow:0 0 25px rgba(212,175,55,.25)}
-  to{box-shadow:0 0 55px rgba(212,175,55,.65)}
+.border{
+  position:absolute;inset:18px;border-radius:35px;
+  border:2px solid rgba(212,175,55,.5);
 }
+.bismillah{font-family:'Amiri',serif;font-size:34px;color:#f7d774}
+.names{font-family:'Great Vibes',cursive;font-size:56px;color:#ffe6a7}
+h2{font-size:29px;color:#f7d774;letter-spacing:2px}
+p{font-size:19px;line-height:1.6;margin:14px 0}
+.quote{font-style:italic;color:#fff1cf}
 
-.bismillah{
-  font-family:'Amiri',serif;
-  font-size:34px;
-  color:#f7d774;
-  margin-bottom:18px;
-}
-
-.names{
-  font-family:'Great Vibes',cursive;
-  font-size:50px;
-  color:#ffe7a3;
-  margin:15px 0;
-}
-
-h2{
-  color:#f7d774;
-  font-size:26px;
-  letter-spacing:2px;
-}
-
-p{
-  font-size:19px;
-  line-height:1.6;
-  margin:14px 0;
-}
-
-.quote{
-  font-size:17px;
-  font-style:italic;
-  color:#fff3d2;
-}
-
-button,.btn{
-  margin:8px;
-  padding:12px 18px;
-  border:none;
-  border-radius:30px;
-  background:#d4af37;
-  color:#3b1d16;
-  font-weight:bold;
-  text-decoration:none;
-  display:inline-block;
-  font-size:15px;
-}
-
-.seal{
-  width:120px;
-  height:120px;
-  background:radial-gradient(circle,#b51f33,#6b0f1c);
-  border-radius:50%;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
-  box-shadow:0 0 35px #d4af37;
-  cursor:pointer;
-  animation:pulse 1.6s infinite;
-}
-
-@keyframes pulse{
-  50%{transform:scale(1.08)}
-}
-
-.openSeal{
-  animation:breakSeal 1s forwards;
-}
-
-@keyframes breakSeal{
-  to{transform:scale(0) rotate(180deg);opacity:0}
+.btn{
+  display:inline-block;margin:8px;padding:12px 18px;
+  border-radius:30px;background:#d4af37;color:#3b160f;
+  font-weight:bold;text-decoration:none;border:none;font-size:15px;
 }
 
 .petal,.sparkle{
-  position:fixed;
-  top:-20px;
-  z-index:1;
-  pointer-events:none;
+  position:fixed;top:-30px;pointer-events:none;z-index:99;
   animation:fall linear infinite;
 }
-
-.petal{
-  color:#ffb6c1;
-  font-size:22px;
-}
-
-.sparkle{
-  color:#ffd700;
-  font-size:14px;
-}
-
+.petal{font-size:24px}
+.sparkle{font-size:15px}
 @keyframes fall{
   to{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
 
-.border{
-  position:absolute;
-  inset:15px;
-  border:2px solid rgba(212,175,55,0.7);
-  border-radius:35px;
-  animation:borderMove 4s infinite alternate;
+.rings{
+  position:relative;height:120px;margin:15px auto;
 }
-
-@keyframes borderMove{
-  from{transform:scale(.98)}
-  to{transform:scale(1.02)}
+.ring{
+  position:absolute;top:25px;width:80px;height:80px;border-radius:50%;
+  border:7px solid #d4af37;box-shadow:0 0 25px #d4af37;
 }
+.r1{left:110px;animation:leftRing 2s infinite alternate}
+.r2{right:110px;animation:rightRing 2s infinite alternate}
+@keyframes leftRing{to{left:150px}}
+@keyframes rightRing{to{right:150px}}
 
-.next{
-  margin-top:22px;
+.countdown{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px;
+}
+.timebox{
+  border:1px solid #d4af37;border-radius:18px;
+  padding:12px 4px;background:rgba(255,255,255,.16)
+}
+.timebox span{display:block;font-size:24px;color:#ffe6a7;font-weight:bold}
+.timebox small{font-size:12px}
+
+.scratch-wrap{
+  position:relative;width:100%;max-width:330px;height:170px;
+  margin:24px auto;border-radius:24px;overflow:hidden;
+  border:2px solid #d4af37;background:#fff8e7;
+}
+.reveal{
+  position:absolute;inset:0;color:#6b1f2b;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.reveal h1{font-size:34px;color:#8b2f3c}
+canvas{position:absolute;inset:0}
+
+.pattern{
+  position:absolute;inset:0;opacity:.08;
+  background-image:
+    linear-gradient(30deg,#d4af37 12%,transparent 12.5%,transparent 87%,#d4af37 87.5%,#d4af37),
+    linear-gradient(150deg,#d4af37 12%,transparent 12.5%,transparent 87%,#d4af37 87.5%,#d4af37);
+  background-size:60px 105px;
 }
 </style>
 </head>
 
 <body>
 
-<section class="active" id="s1">
-  <div class="card">
-    <div class="seal" onclick="openInvite()">💌</div>
-    <p>Tap the wax seal to open</p>
-  </div>
-</section>
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-<section id="s2">
-  <div class="border"></div>
+<div class="audio">
+  <button onclick="toggleMusic()" id="musicBtn">🎵</button>
+</div>
+
+<div class="hero" onclick="openInvitation()">
+  <div class="moon"></div>
+  <div class="lantern">🏮</div>
+  <div>
+    <div class="envelope">
+      <div class="seal">💌</div>
+    </div>
+    <p style="margin-top:25px">Tap the wax seal to open</p>
+  </div>
+</div>
+
+<section>
+  <div class="pattern"></div><div class="border"></div>
   <div class="card">
     <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
     <p>In the name of Allah, the Most Compassionate, the Most Merciful.</p>
-    <button onclick="next()">Open Invitation</button>
+    <p>Scroll to experience the invitation ✨</p>
   </div>
 </section>
 
-<section id="s3">
-  <div class="border"></div>
+<section>
+  <div class="pattern"></div><div class="border"></div>
   <div class="card">
     <p>With hearts full of gratitude and prayers,</p>
     <h2>We Cordially Invite You</h2>
     <p>to the sacred Nikkah ceremony of</p>
-    <button onclick="next()">Continue</button>
   </div>
 </section>
 
-<section id="s4">
-  <div class="border"></div>
+<section>
+  <div class="pattern"></div><div class="border"></div>
   <div class="card">
     <div class="names">Afra Zoya</div>
     <p>&</p>
     <div class="names">Hannan Shariff</div>
+
+    <div class="rings">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+    </div>
+
     <p class="quote">
       “And among His signs is that He created for you spouses,
       so that you may find tranquility in them.”
       <br>— Qur’an 30:21
     </p>
-    <button onclick="next()">Details</button>
   </div>
 </section>
 
-<section id="s5">
-  <div class="border"></div>
+<section>
+  <div class="pattern"></div><div class="border"></div>
   <div class="card">
-    <h2>NIKKAH</h2>
+    <h2>Scratch to Reveal the Date</h2>
+    <div class="scratch-wrap">
+      <div class="reveal">
+        <h1>11 • 11 • 2026</h1>
+        <p>Nikkah Ceremony</p>
+        <p>7:30 PM</p>
+      </div>
+      <canvas id="scratch"></canvas>
+    </div>
+    <p>Rub the golden card ✨</p>
+  </div>
+</section>
+
+<section>
+  <div class="pattern"></div><div class="border"></div>
+  <div class="card">
+    <h2>Countdown Begins</h2>
+    <div class="countdown">
+      <div class="timebox"><span id="days">0</span><small>Days</small></div>
+      <div class="timebox"><span id="hours">0</span><small>Hours</small></div>
+      <div class="timebox"><span id="mins">0</span><small>Mins</small></div>
+      <div class="timebox"><span id="secs">0</span><small>Secs</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="pattern"></div><div class="border"></div>
+  <div class="card">
+    <h2>NIKKAH DETAILS</h2>
     <p>📅 11 • 11 • 2026</p>
     <p>🕢 7:30 PM</p>
     <p>📍 Somewhere, Bangalore</p>
 
-    <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Afra%20Zoya%20and%20Hannan%20Shariff%20Nikkah&dates=20261111T140000Z/20261111T170000Z&details=You%20are%20invited%20to%20the%20Nikkah%20ceremony&location=Somewhere%20Bangalore" target="_blank">
-      Add to Calendar
+    <a class="btn" target="_blank"
+    href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Afra%20Zoya%20and%20Hannan%20Shariff%20Nikkah&dates=20261111T140000Z/20261111T170000Z&location=Somewhere%20Bangalore">
+      📅 Add to Calendar
     </a>
 
-    <a class="btn" href="https://www.google.com/maps/search/Somewhere+Bangalore" target="_blank">
-      Google Maps
+    <a class="btn" target="_blank"
+    href="https://www.google.com/maps/search/Somewhere+Bangalore">
+      📍 Google Maps
     </a>
-
-    <button onclick="next()">RSVP</button>
   </div>
 </section>
 
-<section id="s6">
-  <div class="border"></div>
+<section>
+  <div class="pattern"></div><div class="border"></div>
   <div class="card">
     <h2>RSVP</h2>
     <p>Your presence, blessings and prayers will make our celebration complete.</p>
 
-    <a class="btn" href="https://wa.me/918660235714?text=Assalamu%20Alaikum%2C%20I%20will%20attend%20the%20Nikkah%20InshaAllah" target="_blank">
-      WhatsApp RSVP
+    <a class="btn" target="_blank"
+    href="https://wa.me/918660235714?text=Assalamu%20Alaikum%2C%20I%20will%20attend%20the%20Nikkah%20InshaAllah">
+      💚 WhatsApp RSVP
     </a>
 
     <p>8660235714</p>
@@ -245,29 +293,33 @@ button,.btn{
 </section>
 
 <script>
-let current = 1;
-
-function openInvite(){
-  document.querySelector(".seal").classList.add("openSeal");
-  setTimeout(()=>next(),1000);
+function openInvitation(){
+  document.body.classList.add("open");
+  document.getElementById("music").play();
+  document.getElementById("musicBtn").innerHTML="🔊";
 }
 
-function next(){
-  document.getElementById("s"+current).classList.remove("active");
-  current++;
-  document.getElementById("s"+current).classList.add("active");
+function toggleMusic(){
+  const music=document.getElementById("music");
+  const btn=document.getElementById("musicBtn");
+  if(music.paused){
+    music.play();
+    btn.innerHTML="🔊";
+  }else{
+    music.pause();
+    btn.innerHTML="🎵";
+  }
 }
 
 function createPetal(){
   const p=document.createElement("div");
   p.className="petal";
-  p.innerHTML="🌸";
+  p.innerHTML="🌹";
   p.style.left=Math.random()*100+"vw";
   p.style.animationDuration=5+Math.random()*5+"s";
   document.body.appendChild(p);
   setTimeout(()=>p.remove(),9000);
 }
-
 function createSparkle(){
   const s=document.createElement("div");
   s.className="sparkle";
@@ -277,9 +329,52 @@ function createSparkle(){
   document.body.appendChild(s);
   setTimeout(()=>s.remove(),7000);
 }
+setInterval(createPetal,600);
+setInterval(createSparkle,350);
 
-setInterval(createPetal,500);
-setInterval(createSparkle,300);
+const weddingDate=new Date("November 11, 2026 19:30:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const diff=weddingDate-now;
+  document.getElementById("days").innerText=Math.floor(diff/(1000*60*60*24));
+  document.getElementById("hours").innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("mins").innerText=Math.floor((diff%(1000*60*60))/(1000*60));
+  document.getElementById("secs").innerText=Math.floor((diff%(1000*60))/1000);
+},1000);
+
+const canvas=document.getElementById("scratch");
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas(){
+  canvas.width=canvas.offsetWidth;
+  canvas.height=canvas.offsetHeight;
+  ctx.fillStyle="#d4af37";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#6b1f2b";
+  ctx.font="bold 25px Cormorant Garamond";
+  ctx.textAlign="center";
+  ctx.fillText("Scratch Here ✨",canvas.width/2,canvas.height/2);
+}
+setTimeout(resizeCanvas,300);
+
+let scratching=false;
+function scratch(e){
+  if(!scratching)return;
+  e.preventDefault();
+  const rect=canvas.getBoundingClientRect();
+  const x=(e.clientX||e.touches[0].clientX)-rect.left;
+  const y=(e.clientY||e.touches[0].clientY)-rect.top;
+  ctx.globalCompositeOperation="destination-out";
+  ctx.beginPath();
+  ctx.arc(x,y,24,0,Math.PI*2);
+  ctx.fill();
+}
+canvas.addEventListener("mousedown",()=>scratching=true);
+canvas.addEventListener("mouseup",()=>scratching=false);
+canvas.addEventListener("mousemove",scratch);
+canvas.addEventListener("touchstart",()=>scratching=true);
+canvas.addEventListener("touchend",()=>scratching=false);
+canvas.addEventListener("touchmove",scratch,{passive:false});
 </script>
 
 </body>
