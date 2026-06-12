@@ -1,210 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Afra & Hannan Nikkah Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Amiri&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  font-family:'Cormorant Garamond',serif;
+  background:linear-gradient(135deg,#2b0f16,#6b1f2b,#f8eadb);
+  color:#fff9f2;
 }
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f8eadb, #fff7ef);
-  font-family: 'Playfair Display', serif;
-  overflow: hidden;
-  color: #5b3a29;
+section{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
+  opacity:0;
+  transform:scale(1.08);
+  transition:1.6s ease;
 }
 
-.curtain {
-  position: fixed;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, #7b1e2b, #b84a62);
-  z-index: 10;
-  transition: 2.5s ease;
+section.active{
+  opacity:1;
+  transform:scale(1);
+  z-index:3;
 }
 
-.left {
-  left: 0;
+.card{
+  width:100%;
+  max-width:430px;
+  padding:35px 25px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(14px);
+  border:1.5px solid rgba(212,175,55,0.8);
+  box-shadow:0 0 40px rgba(212,175,55,0.35);
+  animation:glow 3s infinite alternate;
 }
 
-.right {
-  right: 0;
+@keyframes glow{
+  from{box-shadow:0 0 25px rgba(212,175,55,.25)}
+  to{box-shadow:0 0 55px rgba(212,175,55,.65)}
 }
 
-.open .left {
-  transform: translateX(-100%);
+.bismillah{
+  font-family:'Amiri',serif;
+  font-size:34px;
+  color:#f7d774;
+  margin-bottom:18px;
 }
 
-.open .right {
-  transform: translateX(100%);
+.names{
+  font-family:'Great Vibes',cursive;
+  font-size:50px;
+  color:#ffe7a3;
+  margin:15px 0;
 }
 
-.tap-text {
-  position: fixed;
-  z-index: 20;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  color: #fff8e7;
-  font-size: 24px;
-  letter-spacing: 2px;
-  cursor: pointer;
+h2{
+  color:#f7d774;
+  font-size:26px;
+  letter-spacing:2px;
 }
 
-.open .tap-text {
-  display: none;
+p{
+  font-size:19px;
+  line-height:1.6;
+  margin:14px 0;
 }
 
-.card {
-  min-height: 100vh;
-  padding: 35px 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: 2s ease;
+.quote{
+  font-size:17px;
+  font-style:italic;
+  color:#fff3d2;
 }
 
-.open .card {
-  opacity: 1;
-  transform: scale(1);
+button,.btn{
+  margin:8px;
+  padding:12px 18px;
+  border:none;
+  border-radius:30px;
+  background:#d4af37;
+  color:#3b1d16;
+  font-weight:bold;
+  text-decoration:none;
+  display:inline-block;
+  font-size:15px;
 }
 
-.invitation {
-  max-width: 430px;
-  width: 100%;
-  background: rgba(255, 250, 245, 0.92);
-  border: 2px solid #d4af37;
-  border-radius: 28px;
-  padding: 32px 24px;
-  box-shadow: 0 15px 40px rgba(91, 58, 41, 0.25);
+.seal{
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle,#b51f33,#6b0f1c);
+  border-radius:50%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  box-shadow:0 0 35px #d4af37;
+  cursor:pointer;
+  animation:pulse 1.6s infinite;
 }
 
-.bismillah {
-  font-family: 'Amiri', serif;
-  font-size: 28px;
-  color: #8b6f2f;
-  margin-bottom: 18px;
+@keyframes pulse{
+  50%{transform:scale(1.08)}
 }
 
-.small {
-  font-size: 15px;
-  letter-spacing: 1px;
-  margin: 10px 0;
+.openSeal{
+  animation:breakSeal 1s forwards;
 }
 
-.title {
-  font-size: 21px;
-  line-height: 1.6;
-  margin: 18px 0;
+@keyframes breakSeal{
+  to{transform:scale(0) rotate(180deg);opacity:0}
 }
 
-.names {
-  font-family: 'Great Vibes', cursive;
-  font-size: 46px;
-  color: #8b2f3c;
-  margin: 18px 0;
+.petal,.sparkle{
+  position:fixed;
+  top:-20px;
+  z-index:1;
+  pointer-events:none;
+  animation:fall linear infinite;
 }
 
-.and {
-  font-size: 22px;
-  margin: 5px 0;
-  color: #b08d2f;
+.petal{
+  color:#ffb6c1;
+  font-size:22px;
 }
 
-.quote {
-  font-size: 15px;
-  font-style: italic;
-  margin: 20px 0;
-  color: #6b4b36;
-  line-height: 1.6;
+.sparkle{
+  color:#ffd700;
+  font-size:14px;
 }
 
-.details {
-  margin-top: 18px;
-  font-size: 17px;
-  line-height: 1.8;
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
 
-.rsvp {
-  margin-top: 22px;
-  padding: 12px;
-  border-radius: 18px;
-  background: #8b2f3c;
-  color: white;
-  font-size: 16px;
+.border{
+  position:absolute;
+  inset:15px;
+  border:2px solid rgba(212,175,55,0.7);
+  border-radius:35px;
+  animation:borderMove 4s infinite alternate;
 }
 
-.footer {
-  margin-top: 18px;
-  font-size: 14px;
-  color: #7a5a3c;
+@keyframes borderMove{
+  from{transform:scale(.98)}
+  to{transform:scale(1.02)}
+}
+
+.next{
+  margin-top:22px;
 }
 </style>
 </head>
 
-<body onclick="openCurtains()">
+<body>
 
-<div class="curtain left"></div>
-<div class="curtain right"></div>
-<div class="tap-text">Tap to Open Invitation ✨</div>
-
-<div class="card">
-  <div class="invitation">
-
-    <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
-
-    <div class="small">With the blessings of Allah</div>
-
-    <div class="title">
-      We cordially invite you to the Nikkah ceremony of
-    </div>
-
-    <div class="names">Afra Zoya</div>
-    <div class="and">&</div>
-    <div class="names">Hannan Shariff</div>
-
-    <div class="quote">
-      “And We created you in pairs.” <br>
-      — Qur’an 78:8
-    </div>
-
-    <div class="quote">
-      May Allah bless this union with love, mercy and barakah.
-    </div>
-
-    <div class="details">
-      📅 11-11-2026 <br>
-      🕢 7:30 PM <br>
-      📍 Somewhere, Bangalore
-    </div>
-
-    <div class="rsvp">
-      RSVP: 8660235714
-    </div>
-
-    <div class="footer">
-      Your presence will make our day more special.
-    </div>
-
+<section class="active" id="s1">
+  <div class="card">
+    <div class="seal" onclick="openInvite()">💌</div>
+    <p>Tap the wax seal to open</p>
   </div>
-</div>
+</section>
+
+<section id="s2">
+  <div class="border"></div>
+  <div class="card">
+    <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
+    <p>In the name of Allah, the Most Compassionate, the Most Merciful.</p>
+    <button onclick="next()">Open Invitation</button>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="border"></div>
+  <div class="card">
+    <p>With hearts full of gratitude and prayers,</p>
+    <h2>We Cordially Invite You</h2>
+    <p>to the sacred Nikkah ceremony of</p>
+    <button onclick="next()">Continue</button>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="border"></div>
+  <div class="card">
+    <div class="names">Afra Zoya</div>
+    <p>&</p>
+    <div class="names">Hannan Shariff</div>
+    <p class="quote">
+      “And among His signs is that He created for you spouses,
+      so that you may find tranquility in them.”
+      <br>— Qur’an 30:21
+    </p>
+    <button onclick="next()">Details</button>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="border"></div>
+  <div class="card">
+    <h2>NIKKAH</h2>
+    <p>📅 11 • 11 • 2026</p>
+    <p>🕢 7:30 PM</p>
+    <p>📍 Somewhere, Bangalore</p>
+
+    <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Afra%20Zoya%20and%20Hannan%20Shariff%20Nikkah&dates=20261111T140000Z/20261111T170000Z&details=You%20are%20invited%20to%20the%20Nikkah%20ceremony&location=Somewhere%20Bangalore" target="_blank">
+      Add to Calendar
+    </a>
+
+    <a class="btn" href="https://www.google.com/maps/search/Somewhere+Bangalore" target="_blank">
+      Google Maps
+    </a>
+
+    <button onclick="next()">RSVP</button>
+  </div>
+</section>
+
+<section id="s6">
+  <div class="border"></div>
+  <div class="card">
+    <h2>RSVP</h2>
+    <p>Your presence, blessings and prayers will make our celebration complete.</p>
+
+    <a class="btn" href="https://wa.me/918660235714?text=Assalamu%20Alaikum%2C%20I%20will%20attend%20the%20Nikkah%20InshaAllah" target="_blank">
+      WhatsApp RSVP
+    </a>
+
+    <p>8660235714</p>
+  </div>
+</section>
 
 <script>
-function openCurtains() {
-  document.body.classList.add("open");
+let current = 1;
+
+function openInvite(){
+  document.querySelector(".seal").classList.add("openSeal");
+  setTimeout(()=>next(),1000);
 }
+
+function next(){
+  document.getElementById("s"+current).classList.remove("active");
+  current++;
+  document.getElementById("s"+current).classList.add("active");
+}
+
+function createPetal(){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌸";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=5+Math.random()*5+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),9000);
+}
+
+function createSparkle(){
+  const s=document.createElement("div");
+  s.className="sparkle";
+  s.innerHTML="✨";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=3+Math.random()*4+"s";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),7000);
+}
+
+setInterval(createPetal,500);
+setInterval(createSparkle,300);
 </script>
 
 </body>
