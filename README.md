@@ -1,4 +1,4 @@
-# Afra Zoya & Hannan Shariff Wedding Invitation
+# Hannan Shariff & Afra Zoya Wedding Invitation
 
 ## Files
 - index.html
