@@ -1,114 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Afra Zoya & Hannan Shariff Wedding Invitation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afra & Hannan Nikkah Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Amiri&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8eadb, #fff7ef);
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
+  color: #5b3a29;
+}
+
+.curtain {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, #7b1e2b, #b84a62);
+  z-index: 10;
+  transition: 2.5s ease;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.open .left {
+  transform: translateX(-100%);
+}
+
+.open .right {
+  transform: translateX(100%);
+}
+
+.tap-text {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #fff8e7;
+  font-size: 24px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.open .tap-text {
+  display: none;
+}
+
+.card {
+  min-height: 100vh;
+  padding: 35px 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: 2s ease;
+}
+
+.open .card {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.invitation {
+  max-width: 430px;
+  width: 100%;
+  background: rgba(255, 250, 245, 0.92);
+  border: 2px solid #d4af37;
+  border-radius: 28px;
+  padding: 32px 24px;
+  box-shadow: 0 15px 40px rgba(91, 58, 41, 0.25);
+}
+
+.bismillah {
+  font-family: 'Amiri', serif;
+  font-size: 28px;
+  color: #8b6f2f;
+  margin-bottom: 18px;
+}
+
+.small {
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.title {
+  font-size: 21px;
+  line-height: 1.6;
+  margin: 18px 0;
+}
+
+.names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: #8b2f3c;
+  margin: 18px 0;
+}
+
+.and {
+  font-size: 22px;
+  margin: 5px 0;
+  color: #b08d2f;
+}
+
+.quote {
+  font-size: 15px;
+  font-style: italic;
+  margin: 20px 0;
+  color: #6b4b36;
+  line-height: 1.6;
+}
+
+.details {
+  margin-top: 18px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.rsvp {
+  margin-top: 22px;
+  padding: 12px;
+  border-radius: 18px;
+  background: #8b2f3c;
+  color: white;
+  font-size: 16px;
+}
+
+.footer {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #7a5a3c;
+}
+</style>
 </head>
-<body class="lock">
 
-  <button class="music" onclick="toggleMusic()">🎵</button>
+<body onclick="openCurtains()">
 
-  <audio id="bgMusic" loop>
-    <!-- Add your soft music MP3 link below inside src="" -->
-    <source src="" type="audio/mpeg">
-  </audio>
+<div class="curtain left"></div>
+<div class="curtain right"></div>
+<div class="tap-text">Tap to Open Invitation ✨</div>
 
-  <section class="hero" id="hero">
-    <div class="moon">🌙</div>
-    <h1 class="script">You Are Invited</h1>
-    <p class="tagline">TO A BEAUTIFUL BEGINNING</p>
+<div class="card">
+  <div class="invitation">
 
-    <div class="envelope-wrap">
-      <div class="envelope" onclick="openEnvelope()">
-        <div class="env-back"></div>
-        <div class="letter">
-          <div class="bism">بِسْمِ اللهِ</div>
-          <div class="mini">THE INVITATION AWAITS</div>
-        </div>
-        <div class="flap"></div>
-        <div class="env-front"></div>
-        <div class="seal">﷽</div>
-      </div>
+    <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
+
+    <div class="small">With the blessings of Allah</div>
+
+    <div class="title">
+      We cordially invite you to the Nikkah ceremony of
     </div>
 
-    <p class="tap">Tap the wax-sealed envelope</p>
-  </section>
+    <div class="names">Afra Zoya</div>
+    <div class="and">&</div>
+    <div class="names">Hannan Shariff</div>
 
-  <section class="section hidden" id="save">
-    <div class="card">
-      <p class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-      <h2 class="script">Save the Date</h2>
-      <p class="sparkle">✨ ✨ ✨</p>
-      <p class="text">With the blessings of Allah, we request your presence.</p>
-
-      <div class="names">Afra Zoya<br>&<br>Hannan Shariff</div>
-
-      <p class="text">Two hearts. One beautiful journey.</p>
-      <button class="btn" onclick="goScratch()">Scratch to reveal date</button>
+    <div class="quote">
+      “And We created you in pairs.” <br>
+      — Qur’an 78:8
     </div>
-  </section>
 
-  <section class="section hidden" id="scratch">
-    <div class="card">
-      <h2 class="script">Scratch to Reveal</h2>
-      <p class="text">Scratch the golden foil card</p>
-
-      <div class="scratch-box">
-        <div class="reveal">
-          <h3 class="script">Wedding</h3>
-          <p>11 November 2026</p>
-          <p>7:30 PM</p>
-          <p>Something, Bangalore</p>
-        </div>
-        <canvas id="scratchCanvas"></canvas>
-      </div>
-
-      <button class="btn" onclick="showInvite()">Open Full Invitation</button>
+    <div class="quote">
+      May Allah bless this union with love, mercy and barakah.
     </div>
-  </section>
 
-  <main class="invite hidden" id="invite">
-    <section class="section">
-      <div class="card">
-        <p class="arabic">الحمد لله</p>
-        <h2 class="script">Wedding Invitation</h2>
+    <div class="details">
+      📅 11-11-2026 <br>
+      🕢 7:30 PM <br>
+      📍 Somewhere, Bangalore
+    </div>
 
-        <div class="names">Afra Zoya & Hannan Shariff</div>
+    <div class="rsvp">
+      RSVP: 8660235714
+    </div>
 
-        <p class="text">We request the honor of your presence as we begin our new journey together.</p>
+    <div class="footer">
+      Your presence will make our day more special.
+    </div>
 
-        <div class="countdown">
-          <div class="timebox"><b id="days">00</b><span>DAYS</span></div>
-          <div class="timebox"><b id="hours">00</b><span>HOURS</span></div>
-          <div class="timebox"><b id="mins">00</b><span>MINS</span></div>
-          <div class="timebox"><b id="secs">00</b><span>SECS</span></div>
-        </div>
+  </div>
+</div>
 
-        <p class="text"><b>Date:</b> 11 November 2026</p>
-        <p class="text"><b>Time:</b> 7:30 PM</p>
-        <p class="text"><b>Venue:</b> Something, Bangalore</p>
+<script>
+function openCurtains() {
+  document.body.classList.add("open");
+}
+</script>
 
-        <div class="links">
-          <a href="https://wa.me/918660235714?text=InshaAllah%2C%20I%20will%20attend%20the%20wedding" target="_blank">RSVP on WhatsApp</a>
-          <a href="https://maps.app.goo.gl/3gKeHGfApc4LnLzW6" target="_blank">Open Google Maps</a>
-        </div>
-
-        <iframe class="map"
-          src="https://maps.google.com/maps?q=Bangalore&t=&z=11&ie=UTF8&iwloc=&output=embed">
-        </iframe>
-
-        <p class="dua">
-          Barakallahu lakuma wa baraka alaykuma wa jama'a baynakuma fi khayr.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
