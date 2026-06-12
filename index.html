@@ -3,204 +3,456 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Afra & Hannan Nikkah</title>
+<title>Afra & Hannan Nikkah Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Great+Vibes&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   font-family:'Cormorant Garamond',serif;
-  background:#17080d;
+  background:#16070c;
   color:#fff8ec;
   overflow-x:hidden;
 }
-body.open{overflow-y:auto}
+body.lock{overflow:hidden}
+button,a{font-family:inherit}
 
-.audio{position:fixed;right:18px;bottom:18px;z-index:999}
-.audio button{
-  width:54px;height:54px;border-radius:50%;border:none;
-  background:#d4af37;color:#3b160f;font-size:22px;
+#music{
+  display:none;
+}
+
+.musicBtn{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  z-index:9999;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  border:none;
+  background:#d4af37;
+  color:#3b160f;
+  font-size:25px;
   box-shadow:0 0 25px #d4af37;
 }
 
+.skipBtn{
+  position:fixed;
+  top:16px;
+  left:16px;
+  z-index:9999;
+  padding:12px 18px;
+  border-radius:30px;
+  border:2px solid #d4af37;
+  background:#fff8ec;
+  color:#4b1b16;
+  font-size:18px;
+  font-weight:bold;
+}
+
 .hero{
-  min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at top,#7b2434,#2b0f16 55%,#120509);
-  position:relative;overflow:hidden;text-align:center;padding:25px;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:radial-gradient(circle at top,#7b2638,#2b0f16 55%,#100408);
+  position:relative;
+  overflow:hidden;
+  padding:25px;
 }
 
 .moon{
-  position:absolute;top:45px;right:35px;
-  width:80px;height:80px;border-radius:50%;
-  background:#f8e7a0;
-  box-shadow:0 0 45px #f8e7a0;
+  position:absolute;
+  top:55px;
+  right:35px;
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  background:#ffe9a6;
+  box-shadow:0 0 45px #ffe9a6;
+  animation:float 4s infinite ease-in-out;
 }
+
 .moon:after{
-  content:"";position:absolute;left:18px;top:-3px;
-  width:80px;height:80px;border-radius:50%;background:#2b0f16;
+  content:"";
+  position:absolute;
+  left:22px;
+  top:-4px;
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  background:#2b0f16;
 }
 
 .lantern{
-  position:absolute;top:115px;left:28px;font-size:50px;
+  position:absolute;
+  top:125px;
+  left:28px;
+  font-size:55px;
   animation:swing 3s infinite ease-in-out;
 }
+
+.star{
+  position:absolute;
+  color:#ffd86b;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{to{opacity:.25;transform:scale(.7)}}
 @keyframes swing{50%{transform:rotate(8deg)}}
+@keyframes float{50%{transform:translateY(-15px)}}
+
+.envelopeBox{
+  position:relative;
+  width:320px;
+  height:230px;
+  margin:auto;
+}
 
 .envelope{
-  width:290px;height:190px;background:#fff0d5;
-  border-radius:18px;position:relative;
-  box-shadow:0 25px 60px rgba(0,0,0,.45);
-  transition:1.2s;
-}
-.envelope:before{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(145deg,transparent 50%,#e7c78f 50%);
+  position:absolute;
+  bottom:0;
+  width:320px;
+  height:200px;
+  background:#fff0d3;
   border-radius:18px;
+  box-shadow:0 30px 65px rgba(0,0,0,.5);
+  overflow:hidden;
 }
+
+.envelope:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(145deg,transparent 49%,#e2bd7c 50%);
+}
+
+.letter{
+  position:absolute;
+  left:25px;
+  bottom:25px;
+  width:270px;
+  height:165px;
+  background:#fff8ec;
+  border:2px solid #d4af37;
+  border-radius:14px;
+  color:#6b1f2b;
+  padding-top:28px;
+  font-size:24px;
+  transform:translateY(95px);
+  transition:1.4s ease;
+  z-index:2;
+}
+
 .seal{
-  position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  width:92px;height:92px;border-radius:50%;
-  background:radial-gradient(circle,#bd2037,#6b0f1c);
-  display:flex;align-items:center;justify-content:center;
-  font-size:34px;z-index:2;
+  position:absolute;
+  left:50%;
+  bottom:62px;
+  transform:translateX(-50%);
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  background:radial-gradient(circle,#c92c42,#6b0f1c);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  z-index:4;
   box-shadow:0 0 35px #d4af37;
   animation:pulse 1.5s infinite;
 }
-@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.08)}}
 
-.open .hero{display:none}
+@keyframes pulse{50%{transform:translateX(-50%) scale(1.08)}}
+
+.opened .seal{
+  animation:breakSeal 1s forwards;
+}
+
+.opened .letter{
+  transform:translateY(-85px);
+}
+
+.opened .envelopeBox{
+  animation:slideEnvelope 1.5s .7s forwards;
+}
+
+@keyframes breakSeal{
+  to{transform:translateX(-50%) scale(0) rotate(180deg);opacity:0}
+}
+
+@keyframes slideEnvelope{
+  to{transform:translateY(-80px)}
+}
+
+.tapText{
+  margin-top:35px;
+  font-size:24px;
+  font-weight:bold;
+  color:#ffe6a7;
+}
 
 section{
   min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:35px 20px;
-  position:relative;overflow:hidden;
-  background:
-    radial-gradient(circle at top,#6b1f2b,#2b0f16 60%,#100408);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:35px 18px;
+  position:relative;
+  overflow:hidden;
+  background:radial-gradient(circle at top,#6b1f2b,#2b0f16 60%,#100408);
 }
 
-section:nth-child(even){
-  background:
-    radial-gradient(circle at bottom,#7a2a38,#2b0f16 60%,#100408);
+.pattern{
+  position:absolute;
+  inset:0;
+  opacity:.08;
+  background-image:
+  linear-gradient(30deg,#d4af37 12%,transparent 12.5%,transparent 87%,#d4af37 87.5%),
+  linear-gradient(150deg,#d4af37 12%,transparent 12.5%,transparent 87%,#d4af37 87.5%);
+  background-size:70px 120px;
 }
 
 .card{
-  width:100%;max-width:440px;
-  padding:34px 24px;border-radius:32px;
-  background:rgba(255,255,255,.13);
+  width:100%;
+  max-width:460px;
+  padding:35px 24px;
+  border-radius:34px;
+  background:rgba(255,255,255,.14);
   backdrop-filter:blur(16px);
-  border:1.5px solid rgba(212,175,55,.8);
-  box-shadow:0 0 45px rgba(212,175,55,.28);
-  animation:zoom 1.4s ease both;
+  border:2px solid rgba(212,175,55,.85);
+  box-shadow:0 0 45px rgba(212,175,55,.3);
+  z-index:2;
 }
-@keyframes zoom{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 
-.border{
-  position:absolute;inset:18px;border-radius:35px;
-  border:2px solid rgba(212,175,55,.5);
+.bismillah{
+  font-family:'Amiri',serif;
+  font-size:36px;
+  color:#f7d774;
+  line-height:1.6;
 }
-.bismillah{font-family:'Amiri',serif;font-size:34px;color:#f7d774}
-.names{font-family:'Great Vibes',cursive;font-size:56px;color:#ffe6a7}
-h2{font-size:29px;color:#f7d774;letter-spacing:2px}
-p{font-size:19px;line-height:1.6;margin:14px 0}
-.quote{font-style:italic;color:#fff1cf}
+
+.names{
+  font-family:'Great Vibes',cursive;
+  font-size:58px;
+  color:#ffe6a7;
+  margin:12px 0;
+}
+
+h2{
+  font-size:32px;
+  color:#f7d774;
+  letter-spacing:1.5px;
+  margin-bottom:12px;
+}
+
+p{
+  font-size:22px;
+  line-height:1.6;
+  margin:14px 0;
+}
+
+.quote{
+  font-size:20px;
+  font-style:italic;
+  color:#fff1cf;
+}
+
+.bigInfo{
+  font-size:25px;
+  font-weight:bold;
+}
 
 .btn{
-  display:inline-block;margin:8px;padding:12px 18px;
-  border-radius:30px;background:#d4af37;color:#3b160f;
-  font-weight:bold;text-decoration:none;border:none;font-size:15px;
+  display:block;
+  width:100%;
+  margin:13px 0;
+  padding:17px 18px;
+  border-radius:32px;
+  background:#d4af37;
+  color:#3b160f;
+  font-size:21px;
+  font-weight:bold;
+  text-decoration:none;
+  border:none;
 }
 
-.petal,.sparkle{
-  position:fixed;top:-30px;pointer-events:none;z-index:99;
-  animation:fall linear infinite;
-}
-.petal{font-size:24px}
-.sparkle{font-size:15px}
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);opacity:0}
+.secondary{
+  background:#fff8ec;
+  color:#4b1b16;
 }
 
 .rings{
-  position:relative;height:120px;margin:15px auto;
+  position:relative;
+  height:120px;
+  margin:16px auto;
 }
-.ring{
-  position:absolute;top:25px;width:80px;height:80px;border-radius:50%;
-  border:7px solid #d4af37;box-shadow:0 0 25px #d4af37;
-}
-.r1{left:110px;animation:leftRing 2s infinite alternate}
-.r2{right:110px;animation:rightRing 2s infinite alternate}
-@keyframes leftRing{to{left:150px}}
-@keyframes rightRing{to{right:150px}}
 
-.countdown{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px;
+.ring{
+  position:absolute;
+  top:24px;
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:7px solid #d4af37;
+  box-shadow:0 0 25px #d4af37;
 }
-.timebox{
-  border:1px solid #d4af37;border-radius:18px;
-  padding:12px 4px;background:rgba(255,255,255,.16)
-}
-.timebox span{display:block;font-size:24px;color:#ffe6a7;font-weight:bold}
-.timebox small{font-size:12px}
+
+.r1{left:90px;animation:leftRing 2s infinite alternate}
+.r2{right:90px;animation:rightRing 2s infinite alternate}
+
+@keyframes leftRing{to{left:145px}}
+@keyframes rightRing{to{right:145px}}
 
 .scratch-wrap{
-  position:relative;width:100%;max-width:330px;height:170px;
-  margin:24px auto;border-radius:24px;overflow:hidden;
-  border:2px solid #d4af37;background:#fff8e7;
+  position:relative;
+  width:100%;
+  max-width:340px;
+  height:180px;
+  margin:24px auto;
+  border-radius:25px;
+  overflow:hidden;
+  border:3px solid #d4af37;
+  background:#fff8e7;
 }
-.reveal{
-  position:absolute;inset:0;color:#6b1f2b;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-}
-.reveal h1{font-size:34px;color:#8b2f3c}
-canvas{position:absolute;inset:0}
 
-.pattern{
-  position:absolute;inset:0;opacity:.08;
-  background-image:
-    linear-gradient(30deg,#d4af37 12%,transparent 12.5%,transparent 87%,#d4af37 87.5%,#d4af37),
-    linear-gradient(150deg,#d4af37 12%,transparent 12.5%,transparent 87%,#d4af37 87.5%,#d4af37);
-  background-size:60px 105px;
+.reveal{
+  position:absolute;
+  inset:0;
+  color:#6b1f2b;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.reveal h1{
+  font-size:36px;
+  color:#8b2f3c;
+}
+
+canvas{
+  position:absolute;
+  inset:0;
+}
+
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.timebox{
+  border:2px solid #d4af37;
+  border-radius:20px;
+  padding:16px 8px;
+  background:rgba(255,255,255,.16);
+}
+
+.timebox span{
+  display:block;
+  font-size:32px;
+  color:#ffe6a7;
+  font-weight:bold;
+}
+
+.timebox small{
+  font-size:17px;
+}
+
+.petal,.sparkle{
+  position:fixed;
+  top:-30px;
+  pointer-events:none;
+  z-index:99;
+  animation:fall linear infinite;
+}
+
+.petal{
+  font-size:26px;
+  transform-style:preserve-3d;
+}
+
+.sparkle{
+  font-size:16px;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotateX(360deg) rotateZ(360deg);opacity:0}
+}
+
+.mapBox iframe{
+  width:100%;
+  height:260px;
+  border:0;
+  border-radius:24px;
+  margin-top:15px;
+}
+
+.elderNote{
+  background:rgba(255,248,236,.16);
+  border:1px solid #d4af37;
+  border-radius:20px;
+  padding:14px;
+  font-size:20px;
+  color:#fff1cf;
+}
+
+@media(max-width:380px){
+  .names{font-size:50px}
+  p{font-size:20px}
+  h2{font-size:28px}
+  .btn{font-size:19px}
 }
 </style>
 </head>
 
-<body>
+<body class="lock">
 
 <audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="audio">
-  <button onclick="toggleMusic()" id="musicBtn">🎵</button>
-</div>
+<button class="skipBtn" onclick="skipToDetails()">View Details</button>
+<button class="musicBtn" onclick="toggleMusic()" id="musicBtn">🎵</button>
 
-<div class="hero" onclick="openInvitation()">
+<div class="hero" id="hero" onclick="openInvitation()">
   <div class="moon"></div>
   <div class="lantern">🏮</div>
+  <div class="star" style="top:18%;left:18%">✦</div>
+  <div class="star" style="top:28%;right:20%">✦</div>
+  <div class="star" style="bottom:25%;left:12%">✦</div>
+
   <div>
-    <div class="envelope">
+    <div class="envelopeBox" id="envelopeBox">
+      <div class="letter">
+        Afra & Hannan<br>
+        Nikkah Invitation
+      </div>
+      <div class="envelope"></div>
       <div class="seal">💌</div>
     </div>
-    <p style="margin-top:25px">Tap the wax seal to open</p>
+    <div class="tapText">Tap to open invitation</div>
   </div>
 </div>
 
+<main id="main">
+
 <section>
-  <div class="pattern"></div><div class="border"></div>
+  <div class="pattern"></div>
   <div class="card">
     <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
     <p>In the name of Allah, the Most Compassionate, the Most Merciful.</p>
-    <p>Scroll to experience the invitation ✨</p>
+    <p class="elderNote">Scroll down slowly. Large buttons are added for easy access.</p>
   </div>
 </section>
 
 <section>
-  <div class="pattern"></div><div class="border"></div>
+  <div class="pattern"></div>
   <div class="card">
     <p>With hearts full of gratitude and prayers,</p>
     <h2>We Cordially Invite You</h2>
@@ -209,7 +461,7 @@ canvas{position:absolute;inset:0}
 </section>
 
 <section>
-  <div class="pattern"></div><div class="border"></div>
+  <div class="pattern"></div>
   <div class="card">
     <div class="names">Afra Zoya</div>
     <p>&</p>
@@ -229,9 +481,10 @@ canvas{position:absolute;inset:0}
 </section>
 
 <section>
-  <div class="pattern"></div><div class="border"></div>
+  <div class="pattern"></div>
   <div class="card">
     <h2>Scratch to Reveal the Date</h2>
+
     <div class="scratch-wrap">
       <div class="reveal">
         <h1>11 • 11 • 2026</h1>
@@ -240,63 +493,96 @@ canvas{position:absolute;inset:0}
       </div>
       <canvas id="scratch"></canvas>
     </div>
-    <p>Rub the golden card ✨</p>
+
+    <button class="btn secondary" onclick="revealDate()">Reveal Date Directly</button>
   </div>
 </section>
 
 <section>
-  <div class="pattern"></div><div class="border"></div>
+  <div class="pattern"></div>
   <div class="card">
     <h2>Countdown Begins</h2>
     <div class="countdown">
       <div class="timebox"><span id="days">0</span><small>Days</small></div>
       <div class="timebox"><span id="hours">0</span><small>Hours</small></div>
-      <div class="timebox"><span id="mins">0</span><small>Mins</small></div>
-      <div class="timebox"><span id="secs">0</span><small>Secs</small></div>
+      <div class="timebox"><span id="mins">0</span><small>Minutes</small></div>
+      <div class="timebox"><span id="secs">0</span><small>Seconds</small></div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="pattern"></div><div class="border"></div>
+<section id="details">
+  <div class="pattern"></div>
   <div class="card">
     <h2>NIKKAH DETAILS</h2>
-    <p>📅 11 • 11 • 2026</p>
-    <p>🕢 7:30 PM</p>
-    <p>📍 Somewhere, Bangalore</p>
+    <p class="bigInfo">📅 11 November 2026</p>
+    <p class="bigInfo">🕢 7:30 PM</p>
+    <p class="bigInfo">📍 Somewhere, Bangalore</p>
 
     <a class="btn" target="_blank"
-    href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Afra%20Zoya%20and%20Hannan%20Shariff%20Nikkah&dates=20261111T140000Z/20261111T170000Z&location=Somewhere%20Bangalore">
+    href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Afra%20Zoya%20and%20Hannan%20Shariff%20Nikkah&dates=20261111T140000Z/20261111T170000Z&details=You%20are%20invited%20to%20the%20Nikkah%20of%20Afra%20Zoya%20and%20Hannan%20Shariff&location=Somewhere%20Bangalore">
       📅 Add to Calendar
     </a>
 
     <a class="btn" target="_blank"
     href="https://www.google.com/maps/search/Somewhere+Bangalore">
-      📍 Google Maps
+      📍 Open Google Maps
     </a>
-  </div>
-</section>
-
-<section>
-  <div class="pattern"></div><div class="border"></div>
-  <div class="card">
-    <h2>RSVP</h2>
-    <p>Your presence, blessings and prayers will make our celebration complete.</p>
 
     <a class="btn" target="_blank"
     href="https://wa.me/918660235714?text=Assalamu%20Alaikum%2C%20I%20will%20attend%20the%20Nikkah%20InshaAllah">
       💚 WhatsApp RSVP
     </a>
 
-    <p>8660235714</p>
+    <a class="btn secondary" href="tel:8660235714">
+      📞 Call RSVP
+    </a>
   </div>
 </section>
 
+<section>
+  <div class="pattern"></div>
+  <div class="card mapBox">
+    <h2>Venue Map</h2>
+    <p>Tap the button above for directions.</p>
+    <iframe
+      src="https://maps.google.com/maps?q=Somewhere%20Bangalore&t=&z=13&ie=UTF8&iwloc=&output=embed">
+    </iframe>
+  </div>
+</section>
+
+<section>
+  <div class="pattern"></div>
+  <div class="card">
+    <h2>RSVP</h2>
+    <p>Your presence, blessings and prayers will make our celebration complete.</p>
+    <p class="bigInfo">8660235714</p>
+    <a class="btn" target="_blank"
+    href="https://wa.me/918660235714?text=Assalamu%20Alaikum%2C%20I%20will%20attend%20the%20Nikkah%20InshaAllah">
+      💚 Send RSVP on WhatsApp
+    </a>
+  </div>
+</section>
+
+</main>
+
 <script>
 function openInvitation(){
-  document.body.classList.add("open");
-  document.getElementById("music").play();
+  document.getElementById("envelopeBox").classList.add("opened");
+  document.getElementById("music").play().catch(()=>{});
   document.getElementById("musicBtn").innerHTML="🔊";
+
+  setTimeout(()=>{
+    document.body.classList.remove("lock");
+    document.getElementById("hero").style.display="none";
+    window.scrollTo(0,0);
+  },2300);
+}
+
+function skipToDetails(){
+  document.body.classList.remove("lock");
+  document.getElementById("hero").style.display="none";
+  document.getElementById("details").scrollIntoView();
 }
 
 function toggleMusic(){
@@ -320,6 +606,7 @@ function createPetal(){
   document.body.appendChild(p);
   setTimeout(()=>p.remove(),9000);
 }
+
 function createSparkle(){
   const s=document.createElement("div");
   s.className="sparkle";
@@ -329,13 +616,24 @@ function createSparkle(){
   document.body.appendChild(s);
   setTimeout(()=>s.remove(),7000);
 }
-setInterval(createPetal,600);
-setInterval(createSparkle,350);
+
+setInterval(createPetal,700);
+setInterval(createSparkle,400);
 
 const weddingDate=new Date("November 11, 2026 19:30:00").getTime();
+
 setInterval(()=>{
   const now=new Date().getTime();
   const diff=weddingDate-now;
+
+  if(diff<=0){
+    document.getElementById("days").innerText="0";
+    document.getElementById("hours").innerText="0";
+    document.getElementById("mins").innerText="0";
+    document.getElementById("secs").innerText="0";
+    return;
+  }
+
   document.getElementById("days").innerText=Math.floor(diff/(1000*60*60*24));
   document.getElementById("hours").innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
   document.getElementById("mins").innerText=Math.floor((diff%(1000*60*60))/(1000*60));
@@ -345,36 +643,47 @@ setInterval(()=>{
 const canvas=document.getElementById("scratch");
 const ctx=canvas.getContext("2d");
 
-function resizeCanvas(){
+function setupScratch(){
   canvas.width=canvas.offsetWidth;
   canvas.height=canvas.offsetHeight;
+  ctx.globalCompositeOperation="source-over";
   ctx.fillStyle="#d4af37";
   ctx.fillRect(0,0,canvas.width,canvas.height);
   ctx.fillStyle="#6b1f2b";
-  ctx.font="bold 25px Cormorant Garamond";
+  ctx.font="bold 26px Cormorant Garamond";
   ctx.textAlign="center";
   ctx.fillText("Scratch Here ✨",canvas.width/2,canvas.height/2);
 }
-setTimeout(resizeCanvas,300);
+
+setTimeout(setupScratch,500);
 
 let scratching=false;
+
 function scratch(e){
   if(!scratching)return;
   e.preventDefault();
   const rect=canvas.getBoundingClientRect();
-  const x=(e.clientX||e.touches[0].clientX)-rect.left;
-  const y=(e.clientY||e.touches[0].clientY)-rect.top;
+  const touch=e.touches ? e.touches[0] : e;
+  const x=touch.clientX-rect.left;
+  const y=touch.clientY-rect.top;
+
   ctx.globalCompositeOperation="destination-out";
   ctx.beginPath();
-  ctx.arc(x,y,24,0,Math.PI*2);
+  ctx.arc(x,y,26,0,Math.PI*2);
   ctx.fill();
 }
+
 canvas.addEventListener("mousedown",()=>scratching=true);
 canvas.addEventListener("mouseup",()=>scratching=false);
 canvas.addEventListener("mousemove",scratch);
+
 canvas.addEventListener("touchstart",()=>scratching=true);
 canvas.addEventListener("touchend",()=>scratching=false);
 canvas.addEventListener("touchmove",scratch,{passive:false});
+
+function revealDate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+}
 </script>
 
 </body>
